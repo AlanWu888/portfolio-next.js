@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full bg-white dark:bg-[#343A40] text-black dark:text-white shadow-md sticky top-0 z-50 transition-colors">
+    <nav className="w-full bg-sidebar text-sidebar-foreground shadow-md sticky top-0 z-50 transition-colors">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         <div className="text-xl font-bold">Alan Wu</div>
 
@@ -29,20 +29,16 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
           <Link
             href="/"
-            className={`hover:text-[#E57B70] ${
-              pathname === '/' ? 'text-[#E57B70] font-semibold' : ''
-            }`}
+            className={`nav-link ${pathname === '/' ? 'nav-link-active' : ''}`}
           >
             About
           </Link>
-          <a href="#experience" className="hover:text-[#E57B70]">Experience</a>
-          <a href="#projects" className="hover:text-[#E57B70]">Projects</a>
-          <a href="#contact" className="hover:text-[#E57B70]">Contact</a>
+          <a href="#experience" className="nav-link">Experience</a>
+          <a href="#projects" className="nav-link">Projects</a>
+          <a href="#contact" className="nav-link">Contact</a>
           <Link
             href="/cv"
-            className={`hover:text-[#E57B70] ${
-              pathname === '/cv' ? 'text-[#E57B70] font-semibold' : ''
-            }`}
+            className={`nav-link ${pathname === '/cv' ? 'nav-link-active' : ''}`}
           >
             Resume
           </Link>
@@ -69,13 +65,11 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white dark:bg-[#343A40] px-4 pb-4 space-y-3 text-sm font-medium">
+        <div className="md:hidden bg-sidebar text-sidebar-foreground px-4 pb-4 space-y-3 text-sm font-medium">
           <Link
             href="/"
             onClick={() => setMenuOpen(false)}
-            className={`block hover:text-[#E57B70] ${
-              pathname === '/' ? 'text-[#E57B70] font-semibold' : ''
-            }`}
+            className={`mobile-nav-link ${pathname === '/' ? 'mobile-nav-link-active' : ''}`}
           >
             About
           </Link>
@@ -84,7 +78,7 @@ const Navbar = () => {
               key={id}
               href={`#${id}`}
               onClick={() => setMenuOpen(false)}
-              className="block hover:text-[#E57B70]"
+              className="mobile-nav-link"
             >
               {id.charAt(0).toUpperCase() + id.slice(1)}
             </a>
@@ -92,9 +86,7 @@ const Navbar = () => {
           <Link
             href="/cv"
             onClick={() => setMenuOpen(false)}
-            className={`block hover:text-[#E57B70] ${
-              pathname === '/cv' ? 'text-[#E57B70] font-semibold' : ''
-            }`}
+            className={`mobile-nav-link ${pathname === '/cv' ? 'mobile-nav-link-active' : ''}`}
           >
             Resume
           </Link>

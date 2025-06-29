@@ -76,6 +76,7 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --nav-hover: oklch(0.7 0.2 150); /* light green for hover */
 }
 
 .dark {
@@ -110,6 +111,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --nav-hover: oklch(0.6 0.19 145); /* darker green for dark mode */
 }
 
 @layer base {
@@ -118,5 +120,32 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .nav-link {
+    @apply transition-colors;
+  }
+
+  .nav-link:hover {
+    color: var(--nav-hover);
+  }
+
+  .nav-link-active {
+    @apply text-primary font-bold underline underline-offset-4;
+  }
+
+  .mobile-nav-link {
+    @apply block px-2 py-1 rounded-md transition-colors;
+  }
+
+  .mobile-nav-link:hover {
+    color: var(--nav-hover);
+    background-color: var(--color-muted);
+  }
+
+  .mobile-nav-link-active {
+    @apply bg-muted text-primary font-semibold;
   }
 }
