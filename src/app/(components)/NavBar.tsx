@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const {resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
