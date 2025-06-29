@@ -10,7 +10,7 @@ interface PDFViewerProps {
 
 const PDFViewer: React.FC<PDFViewerProps> = ({ title, pdfPath }) => {
   return (
-    <div className="p-4 sm:p-6 max-w-7xl mx-auto bg-card text-card-foreground">
+    <div className="p-4 max-w-7xl mx-auto bg-card text-card-foreground">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
         <h1 className="text-2xl sm:text-3xl font-semibold">{title}</h1>
         <a
