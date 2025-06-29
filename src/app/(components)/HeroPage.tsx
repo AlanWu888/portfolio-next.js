@@ -15,15 +15,17 @@ export default function HeroPage() {
           ? "graph-paper-dark text-white"
           : "graph-paper-light text-black"
       }`}
-      style={{
+    style={
+      {
         backgroundColor: theme === "dark" ? "black" : "white",
-        ["--background-color" as any]: theme === "dark" ? "black" : "white",
-      }}
+        "--background-color": theme === "dark" ? "black" : "white",
+      } as React.CSSProperties
+    }
     >
       <div className="relative flex flex-col md:flex-row items-center gap-8 max-w-6xl px-4 md:px-8 py-20 z-10 md:-translate-y-20">
         {/* image with green frame */}
         <div className="relative w-72 md:w-96 aspect-[3/4]">
-        
+
           {/* Social Icons at the slightly lower bottom center */}
           <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-3">
             <a
@@ -69,7 +71,7 @@ export default function HeroPage() {
 
         {/* text and CTAs */}
         <div className="max-w-xl text-center md:text-left">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">Hi, I'm Alan Wu.</h1>
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">Hi, I&apos;m Alan Wu.</h1>
           <p className="text-lg md:text-xl leading-relaxed mb-6">
             Graduate DevOps engineer at IBM Consulting with a strong interest in web development.
           </p>
