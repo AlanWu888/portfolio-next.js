@@ -15,10 +15,12 @@ export default function HeroPage() {
           ? "graph-paper-dark text-white"
           : "graph-paper-light text-black"
       }`}
-      style={{
+    style={
+      {
         backgroundColor: theme === "dark" ? "black" : "white",
-        ["--background-color" as any]: theme === "dark" ? "black" : "white",
-      }}
+        "--background-color": theme === "dark" ? "black" : "white",
+      } as React.CSSProperties
+    }
     >
       <div className="relative flex flex-col md:flex-row items-center gap-8 max-w-6xl px-4 md:px-8 py-20 z-10 md:-translate-y-20">
         {/* image with green frame */}
