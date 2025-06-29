@@ -6,7 +6,7 @@ import { useTheme } from 'next-themes';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
-const Navbar = () => {
+const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -96,4 +96,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;

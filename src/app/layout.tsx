@@ -1,45 +1,28 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "./(components)/ThemeProvider";
-import Navbar from "./(components)/NavBar";
+import './globals.css';
+import { Inter } from 'next/font/google';
+import { ThemeProvider } from './(components)/ThemeProvider';
+import NavBar from './(components)/NavBar';
+import HeroPage from './(components)/HeroPage';
 
+const inter = Inter({ subsets: ['latin'] });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Alan Wu | Portfolio",
-  description: "Welcome to my portfolio website!",
+export const metadata = {
+  title: 'Alan Wu Portfolio',
+  description: 'DevOps & Web Developer Portfolio',
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="bg-white dark:bg-[#343A40] text-black dark:text-white">
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Navbar />
-
-            <main className="max-w-6xl mx-auto px-4 md:px-8 py-8">
-              {children}
-            </main>
-          </ThemeProvider>
+    <html lang="en">
+      <body>
+        <ThemeProvider>
+          <NavBar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
