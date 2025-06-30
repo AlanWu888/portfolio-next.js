@@ -1,7 +1,9 @@
 'use client';
 
-import React from 'react';
-import { Download } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useTheme } from 'next-themes';
+import { Download, ArrowLeft, Sun, Moon } from 'lucide-react';
 
 interface PDFViewerProps {
   title: string;
@@ -9,8 +11,39 @@ interface PDFViewerProps {
 }
 
 const PDFViewer: React.FC<PDFViewerProps> = ({ title, pdfPath }) => {
+  const router = useRouter();
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const toggleDarkMode = () => {
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+  };
+
   return (
-    <div className="p-4 max-w-7xl mx-auto bg-card text-card-foreground">
+    <div className="p-4 max-w-7xl mx-auto bg-card text-card-foreground min-h-screen">
+      <div className="flex items-center justify-between mb-4">
+        <button
+          onClick={() => router.push('/')}
+          className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium bg-muted text-foreground rounded-md shadow hover:bg-muted/80 transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Home
+        </button>
+
+        {mounted && (
+          <button
+            onClick={toggleDarkMode}
+            className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium bg-muted text-foreground rounded-md shadow hover:bg-muted/80 transition-colors"
+          >
+            {resolvedTheme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
+        )}
+      </div>
+
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
         <h1 className="text-2xl sm:text-3xl font-semibold">{title}</h1>
         <a
