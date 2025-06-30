@@ -29,5 +29,44 @@ export const projects = [
       docs: "https://github.com/AlanWu888/ANN-implementation/blob/main/pdfs/Report.pdf",
     },
   },
-  
+  {
+    title: "Task Manager App",
+    description: `
+      A full-stack task management application built using Next.js, Prisma, and React. Features include task creation, editing,
+      archiving, and an intuitive drag-and-drop interface. Developed for a Ministry of Justice coding challenge.`,
+    techStack: ["TypeScript", "JavaScript", "CSS", "Next.js", "React", "Prisma"],
+    links: {
+      code: "https://github.com/AlanWu888/ministry-of-justice-code-challenge",
+    },
+  },
+  {
+    title: "Arduino-Thermostat",
+    description: `
+      Embedded Systems Programming coursework project for building a home control thermostat. Designed to manage heating and lighting systems in a simulated house environment.
+      Code was lost due to file corruption, but documentation detailing design, implementation, and testing is available.`,
+    techStack: ["C#"],
+    links: {
+      docs: "https://github.com/AlanWu888/Arduino-Thermostat",
+    },
+  },
+    {
+    title: "A Level NEA Project",
+    description: `
+      A Level Computer Science NEA project developed in VB.NET. Utilized object-oriented programming to process game files
+      and implemented SQL queries to manage game leaderboards.`,
+    techStack: ["VB.NET", "SQL"],
+    links: {
+      code: "https://github.com/AlanWu888/Geometry-Hop",
+    },
+  },
+  {
+    title: "goSkate-App",
+    description: `
+      Android application that allows users to upload and view local skatespots. Includes a feature to play the game of S.K.A.T.E
+      with difficulty filters. Comes with a dedicated admin app for managing user content.`,
+    techStack: ["Java", "HTML", "CSS"],
+    links: {
+      code: "https://github.com/AlanWu888/goSkate-App",
+    },
+  }
 ];

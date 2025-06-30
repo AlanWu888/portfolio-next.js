@@ -9,8 +9,8 @@ export default function ProjectsSection() {
   const isDark = resolvedTheme === "dark";
 
   const blobColors = isDark
-    ? ["bg-purple-900", "bg-blue-900", "bg-teal-900"]
-    : ["bg-purple-300", "bg-blue-300", "bg-teal-300"];
+    ? ["bg-purple-900", "bg-blue-900", "bg-teal-900", "bg-pink-900", "bg-indigo-900", "bg-emerald-900"]
+    : ["bg-purple-300", "bg-blue-300", "bg-teal-300", "bg-pink-300", "bg-indigo-300", "bg-emerald-300"];
 
   return (
     <section id="projects" className="relative bg-muted/30 py-16 overflow-hidden">
@@ -33,6 +33,9 @@ export default function ProjectsSection() {
         <div className={`absolute top-[-10%] left-[-10%] w-[300px] h-[300px] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob1 ${blobColors[0]}`} />
         <div className={`absolute top-[20%] left-[60%] w-[300px] h-[300px] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob2 ${blobColors[1]}`} />
         <div className={`absolute bottom-[-10%] left-[30%] w-[300px] h-[300px] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob3 ${blobColors[2]}`} />
+        <div className={`absolute top-[60%] left-[10%] w-[300px] h-[300px] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob4 ${blobColors[3]}`} />
+        <div className={`absolute top-[30%] left-[80%] w-[300px] h-[300px] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob5 ${blobColors[4]}`} />
+        <div className={`absolute bottom-[20%] left-[75%] w-[300px] h-[300px] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob6 ${blobColors[5]}`} />
       </div>
 
       <div
@@ -42,8 +45,15 @@ export default function ProjectsSection() {
         }}
       />
 
+      <div
+        className="absolute bottom-0 left-0 w-full h-16 z-30 pointer-events-none"
+        style={{
+          backgroundImage: "linear-gradient(to bottom, transparent, var(--background))",
+        }}
+      />
+
       <div className="max-w-5xl mx-auto px-4 md:px-10">
-        <h2 className="text-3xl font-bold text-primary text-left mb-10">Projects</h2>
+        <h2 className="text-3xl font-bold text-primary text-left mb-10">Personal Projects</h2>
 
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, idx) => (

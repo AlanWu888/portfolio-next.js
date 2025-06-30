@@ -205,6 +205,31 @@ html {
   }
 }
 
+@keyframes blob4 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(-30px, -30px) scale(1.1);
+  }
+}
+@keyframes blob5 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(40px, 10px) scale(1.1);
+  }
+}
+@keyframes blob6 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(-10px, 40px) scale(1.1);
+  }
+}
+
 .animate-blob1 {
   animation: blob1 20s infinite ease-in-out;
 }
@@ -213,4 +238,13 @@ html {
 }
 .animate-blob3 {
   animation: blob3 30s infinite ease-in-out;
+}
+.animate-blob4 {
+  animation: blob4 22s infinite ease-in-out;
+}
+.animate-blob5 {
+  animation: blob5 28s infinite ease-in-out;
+}
+.animate-blob6 {
+  animation: blob6 26s infinite ease-in-out;
 }
