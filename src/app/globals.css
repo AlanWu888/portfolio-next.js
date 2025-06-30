@@ -116,6 +116,17 @@
   --grid-line: rgba(255, 255, 255, 0.05);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+.nav-link-active {
+  color: var(--nav-hover);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -161,8 +172,8 @@
 
   .graph-paper-dark {
     background-image:
-      linear-gradient(to right, rgb(0, 0, 0) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(0, 0, 0) 1px, transparent 1px);
+      linear-gradient(to right, rgb(32, 32, 32) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(32, 32, 32) 1px, transparent 1px);
     background-size: 20px 20px;
   }
 }
