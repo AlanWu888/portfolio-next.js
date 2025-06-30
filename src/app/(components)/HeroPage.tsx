@@ -9,7 +9,8 @@ export default function HeroPage() {
   const { theme } = useTheme();
 
   return (
-    <section
+    <section 
+      id="about"
       className={`relative overflow-hidden min-h-screen flex items-center justify-center transition-colors duration-300 ${
         theme === "dark"
           ? "graph-paper-dark text-white"
@@ -17,13 +18,12 @@ export default function HeroPage() {
       }`}
     style={
       {
-        backgroundColor: theme === "dark" ? "black" : "white",
-        "--background-color": theme === "dark" ? "black" : "white",
+        backgroundColor: "var(--background-color)"
       } as React.CSSProperties
     }
     >
       <div className="relative flex flex-col md:flex-row items-center gap-8 max-w-6xl px-4 md:px-8 py-20 z-10 md:-translate-y-20">
-        {/* image with green frame */}
+        {/* image with highlight frame */}
         <div className="relative w-72 md:w-96 aspect-[3/4]">
 
           {/* Social Icons at the slightly lower bottom center */}
@@ -32,14 +32,14 @@ export default function HeroPage() {
               href={process.env.NEXT_PUBLIC_LINKEDIN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white dark:bg-neutral-800 text-black dark:text-white rounded-full p-2 shadow-md border"
+              className="bg-white dark:bg-neutral-800 text-black dark:text-white rounded-full p-2 shadow-md border transition-transform duration-200 ease-out transform hover:scale-110 hover:-translate-y-1"
               style={{ borderColor: "var(--nav-hover)" }}
             >
               <Linkedin size={20} />
             </a>
             <a
               href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_URL}`}
-              className="bg-white dark:bg-neutral-800 text-black dark:text-white rounded-full p-2 shadow-md border"
+              className="bg-white dark:bg-neutral-800 text-black dark:text-white rounded-full p-2 shadow-md border transition-transform duration-200 ease-out transform hover:scale-110 hover:-translate-y-1"
               style={{ borderColor: "var(--nav-hover)" }}
             >
               <Mail size={20} />
@@ -48,7 +48,7 @@ export default function HeroPage() {
               href={process.env.NEXT_PUBLIC_GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white dark:bg-neutral-800 text-black dark:text-white rounded-full p-2 shadow-md border"
+              className="bg-white dark:bg-neutral-800 text-black dark:text-white rounded-full p-2 shadow-md border transition-transform duration-200 ease-out transform hover:scale-110 hover:-translate-y-1"
               style={{ borderColor: "var(--nav-hover)" }}
             >
               <Github size={20} />
@@ -85,9 +85,9 @@ export default function HeroPage() {
 
       {/* bottom fade */}
       <div
-        className="absolute bottom-0 left-0 w-full h-16 md:h-32 lg:h-64 z-20 pointer-events-none"
+        className="absolute bottom-0 left-0 w-full h-16 md:h-32 lg:h-64 z-30 pointer-events-none"
         style={{
-          backgroundImage: "linear-gradient(to bottom, transparent, var(--background-color))",
+          backgroundImage: "linear-gradient(to bottom, transparent, var(--background))",
         }}
       />
     </section>

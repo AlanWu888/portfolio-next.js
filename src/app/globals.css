@@ -112,8 +112,19 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-  --nav-hover: oklch(0.6 0.19 145); /* darker green for dark mode */
+  --nav-hover: oklch(37.073% 0.17468 298.354); /* darker green for dark mode */
   --grid-line: rgba(255, 255, 255, 0.05);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.nav-link-active {
+  color: var(--nav-hover);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 @layer base {
@@ -161,8 +172,8 @@
 
   .graph-paper-dark {
     background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      linear-gradient(to right, rgb(32, 32, 32) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(32, 32, 32) 1px, transparent 1px);
     background-size: 20px 20px;
   }
 }
