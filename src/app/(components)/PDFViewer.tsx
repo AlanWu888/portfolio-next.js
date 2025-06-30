@@ -23,6 +23,8 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ title, pdfPath }) => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
 
+  if (!mounted) return null;
+
   return (
     <div className="p-4 max-w-7xl mx-auto bg-card text-card-foreground min-h-screen">
       <div className="flex items-center justify-between mb-4">
@@ -34,14 +36,12 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ title, pdfPath }) => {
           Back to Home
         </button>
 
-        {mounted && (
-          <button
-            onClick={toggleDarkMode}
-            className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium bg-muted text-foreground rounded-md shadow hover:bg-muted/80 transition-colors"
-          >
-            {resolvedTheme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </button>
-        )}
+        <button
+          onClick={toggleDarkMode}
+          className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium bg-muted text-foreground rounded-md shadow hover:bg-muted/80 transition-colors"
+        >
+          {resolvedTheme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+        </button>
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
@@ -56,11 +56,15 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ title, pdfPath }) => {
         </a>
       </div>
 
-      <div className="w-full h-[75vh] border border-border rounded overflow-hidden">
+      <div className="w-full border border-border rounded overflow-auto">
         <iframe
           src={pdfPath}
-          className="w-full h-full"
           title="PDF Preview"
+          style={{
+            width: '100%',
+            height: '1500px', // Fixed height to ensure all pages show
+            border: 'none',
+          }}
         />
       </div>
     </div>
