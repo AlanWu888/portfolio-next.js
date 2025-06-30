@@ -14,7 +14,21 @@ export default function ProjectsSection() {
 
   return (
     <section id="projects" className="relative bg-muted/30 py-16 overflow-hidden">
-      {/* Blobs */}
+      <style jsx global>{`
+        @keyframes shakeXY {
+          0% { transform: translate(0, 0); }
+          20% { transform: translate(-2px, -2px); }
+          40% { transform: translate(2px, -2px); }
+          60% { transform: translate(2px, 2px); }
+          80% { transform: translate(-2px, 2px); }
+          100% { transform: translate(0, 0); }
+        }
+
+        .hover-shake-xy:hover {
+          animation: shakeXY 0.5s ease-in-out;
+        }
+      `}</style>
+
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className={`absolute top-[-10%] left-[-10%] w-[300px] h-[300px] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob1 ${blobColors[0]}`} />
         <div className={`absolute top-[20%] left-[60%] w-[300px] h-[300px] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob2 ${blobColors[1]}`} />
@@ -44,22 +58,27 @@ export default function ProjectsSection() {
                 {project.techStack.map((tech, i) => (
                   <span
                     key={i}
-                    className="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium"
+                    className="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium hover-shake-xy outline outline-1 outline-transparent hover:outline-[var(--nav-hover)] transition-all duration-300"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
-
               <div className="mt-auto flex gap-4 text-sm font-medium">
                 {project.links.code && (
                   <a
                     href={project.links.code}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-primary hover:text-[var(--nav-hover)]"
+                    className="group inline-flex items-center text-primary hover:text-[var(--nav-hover)] transition-colors"
                   >
-                    Code <ExternalLink size={14} className="ml-1" />
+                    Code{" "}
+                    <span className="group">
+                      <ExternalLink
+                        size={14}
+                        className="ml-1 transition-transform group-hover:-translate-y-0.5 group-hover:-rotate-45"
+                      />
+                    </span>
                   </a>
                 )}
                 {project.links.docs && (
@@ -67,9 +86,14 @@ export default function ProjectsSection() {
                     href={project.links.docs}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-primary hover:text-[var(--nav-hover)]"
+                    className="group inline-flex items-center text-primary hover:text-[var(--nav-hover)] transition-colors"
                   >
-                    Docs <ExternalLink size={14} className="ml-1" />
+                    Docs{" "}
+                    <span className="group">
+                      <ExternalLink
+                        className="ml-2 h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:-rotate-45"
+                      />
+                    </span>
                   </a>
                 )}
               </div>
