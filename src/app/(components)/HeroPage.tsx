@@ -2,31 +2,36 @@
 
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import ThemedButton from "./ThemedButton";
 import { Mail, Linkedin, Github } from "lucide-react";
 
 export default function HeroPage() {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   return (
-    <section 
+    <section
       id="about"
       className={`relative overflow-hidden min-h-screen flex items-center justify-center transition-colors duration-300 ${
-        theme === "dark"
+        resolvedTheme === "dark"
           ? "graph-paper-dark text-white"
           : "graph-paper-light text-black"
       }`}
-    style={
-      {
-        backgroundColor: "var(--background-color)"
-      } as React.CSSProperties
-    }
+      style={{
+        backgroundColor: "var(--background-color)",
+      }}
     >
       <div className="relative flex flex-col md:flex-row items-center gap-8 max-w-6xl px-4 md:px-8 py-20 z-10 md:-translate-y-20">
         {/* image with highlight frame */}
         <div className="relative w-72 md:w-96 aspect-[3/4]">
-
-          {/* Social Icons at the slightly lower bottom center */}
+          {/* Social Icons */}
           <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-3">
             <a
               href={process.env.NEXT_PUBLIC_LINKEDIN_URL}
@@ -54,6 +59,7 @@ export default function HeroPage() {
               <Github size={20} />
             </a>
           </div>
+
           <div
             className="absolute -top-5 -left-5 w-full h-full scale-105 rounded-md z-0"
             style={{ backgroundColor: "var(--nav-hover)" }}
