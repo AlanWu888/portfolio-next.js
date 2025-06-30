@@ -5,12 +5,18 @@ import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { useScrollSpy } from '../hooks/useScrollSpy';
+import { useRouter } from 'next/navigation';
+
+const sectionIds = ['experience', 'projects', 'contact'];
 
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const {resolvedTheme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+  const activeId = useScrollSpy(['about', ...sectionIds]);
+  const router = useRouter();
 
   useEffect(() => {
     setMounted(true);
@@ -20,6 +26,30 @@ const NavBar = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
 
+  const handleNavClick = (id: string) => {
+    setMenuOpen(false);
+
+    if (pathname !== '/') {
+      router.push(`/#${id}`);
+
+      // Listen for route change then scroll
+      const scrollOnRoute = () => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        window.removeEventListener('hashchange', scrollOnRoute);
+      };
+
+      window.addEventListener('hashchange', scrollOnRoute);
+    } else {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
   return (
     <nav className="w-full bg-sidebar text-sidebar-foreground shadow-md sticky top-0 z-50 transition-colors">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -27,15 +57,23 @@ const NavBar = () => {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          <Link
-            href="/"
-            className={`nav-link ${pathname === '/' ? 'nav-link-active' : ''}`}
+          <button
+            onClick={() => handleNavClick('about')}
+            className={`nav-link ${activeId === 'about' ? 'nav-link-active' : ''}`}
           >
             About
-          </Link>
-          <a href="#experience" className="nav-link">Experience</a>
-          <a href="#projects" className="nav-link">Projects</a>
-          <a href="#contact" className="nav-link">Contact</a>
+          </button>
+
+          {sectionIds.map((id) => (
+            <button
+              key={id}
+              onClick={() => handleNavClick(id)}
+              className={`nav-link ${activeId === id ? 'nav-link-active' : ''}`}
+            >
+              {id.charAt(0).toUpperCase() + id.slice(1)}
+            </button>
+          ))}
+
           <Link
             href="/cv"
             className={`nav-link ${pathname === '/cv' ? 'nav-link-active' : ''}`}
@@ -66,22 +104,26 @@ const NavBar = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden bg-sidebar text-sidebar-foreground px-4 pb-4 space-y-3 text-sm font-medium">
-          <Link
-            href="/"
-            onClick={() => setMenuOpen(false)}
-            className={`mobile-nav-link ${pathname === '/' ? 'mobile-nav-link-active' : ''}`}
+          <button
+            onClick={() => {
+              handleNavClick('about');
+              setMenuOpen(false);
+            }}
+            className={`mobile-nav-link ${activeId === 'about' ? 'mobile-nav-link-active' : ''}`}
           >
             About
-          </Link>
-          {['experience', 'projects', 'contact'].map((id) => (
-            <a
+          </button>
+          {sectionIds.map((id) => (
+            <button
               key={id}
-              href={`#${id}`}
-              onClick={() => setMenuOpen(false)}
-              className="mobile-nav-link"
+              onClick={() => {
+                handleNavClick(id);
+                setMenuOpen(false);
+              }}
+              className={`mobile-nav-link ${activeId === id ? 'mobile-nav-link-active' : ''}`}
             >
               {id.charAt(0).toUpperCase() + id.slice(1)}
-            </a>
+            </button>
           ))}
           <Link
             href="/cv"
