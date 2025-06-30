@@ -19,6 +19,18 @@ export function useScrollSpy(selectors: string[]): string | null {
         }
       }
 
+      // exception: if near bottom of page, force 'contact' as active
+      const scrollY = window.scrollY;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = window.innerHeight;
+
+      const bottomThreshold = 10; // px from bottom
+      const isAtBottom = scrollY + clientHeight >= scrollHeight - bottomThreshold;
+
+      if (isAtBottom && selectors.includes('contact')) {
+        currentId = 'contact';
+      }
+
       setActiveId(currentId);
     };
 
