@@ -7,6 +7,7 @@ import HeroPage from "./(components)/HeroPage";
 import WorkExperienceSection from "./(components)/WorkExperience";
 // import EducationSection from './(components)/Education';
 import ProjectsSection from './(components)/Projects';
+import ContactSection from './(components)/Contact';
 
 export default function HomePage() {
   useEffect(() => {
@@ -28,6 +29,7 @@ export default function HomePage() {
       <HeroPage />
       <WorkExperienceSection />
       <ProjectsSection/>
+      <ContactSection/>
       {/* <EducationSection/> */}
       {/* other sections */}
     </>
