@@ -17,8 +17,7 @@ export default function HeroPage() {
       }`}
     style={
       {
-        backgroundColor: theme === "dark" ? "black" : "white",
-        "--background-color": theme === "dark" ? "black" : "white",
+        backgroundColor: "var(--background-color)"
       } as React.CSSProperties
     }
     >
@@ -85,9 +84,9 @@ export default function HeroPage() {
 
       {/* bottom fade */}
       <div
-        className="absolute bottom-0 left-0 w-full h-16 md:h-32 lg:h-64 z-20 pointer-events-none"
+        className="absolute bottom-0 left-0 w-full h-16 md:h-32 lg:h-64 z-30 pointer-events-none"
         style={{
-          backgroundImage: "linear-gradient(to bottom, transparent, var(--background-color))",
+          backgroundImage: "linear-gradient(to bottom, transparent, var(--background))",
         }}
       />
     </section>
