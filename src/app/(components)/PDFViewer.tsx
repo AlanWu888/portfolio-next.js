@@ -62,7 +62,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ title, pdfPath }) => {
           title="PDF Preview"
           style={{
             width: '100%',
-            height: '1500px', // Fixed height to ensure all pages show
+            height: '1500px',
             border: 'none',
           }}
         />
