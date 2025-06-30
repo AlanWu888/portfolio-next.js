@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export function useScrollSpy(selectors: string[], offset = 0): string | null {
+export function useScrollSpy(selectors: string[]): string | null {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
