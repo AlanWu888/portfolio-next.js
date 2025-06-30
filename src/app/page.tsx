@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import NavBar from './(components)/NavBar';
 import HeroPage from "./(components)/HeroPage";
 import WorkExperienceSection from "./(components)/WorkExperience";
+import EducationSection from './(components)/Education';
 
 export default function HomePage() {
   useEffect(() => {
@@ -25,6 +26,7 @@ export default function HomePage() {
       <NavBar />
       <HeroPage />
       <WorkExperienceSection />
+      <EducationSection/>
       {/* other sections */}
     </>
   );
