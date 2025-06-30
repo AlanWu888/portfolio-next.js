@@ -3,13 +3,6 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { experiences } from "@/content/WorkExperience";
 
-type Experience = {
-  role: string;
-  company: string;
-  duration: string;
-  description: string;
-};
-
 export default function WorkExperienceSection() {
   return (
     <section id="experience" className="relative py-16 px-4 md:px-10 max-w-5xl mx-auto">
