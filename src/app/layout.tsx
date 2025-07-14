@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Alan Wu Portfolio',
-  description: 'DevOps & Web Developer Portfolio',
-};
+  description: 'Welcome to my Portfolio site!',
+}; 
 
 export default function RootLayout({
   children,
